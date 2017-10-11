@@ -1,23 +1,35 @@
 @startuml
 autonumber "<b>[000]"
 
-actor "爬取入口\n输入" as a
-entity "命令解析器" as run 
 
-
-a -> run : hello
+run ->http请求 : http请求
 note right
-对第一步加一个简要说明
-* 步骤１
-* 步骤２
+基于url发送请求
 end note
 
-a1 -> a : g
-loop 1000 times
-a1 -> a2 : b 
-a2 -> a2 : x 
+loop n times
+http请求 --> httpStatus解析 : http请求
+httpStatus解析 --> http请求: httpStatus解析 
+
+note over http请求,httpStatus解析
+根据httpStatus循环请求
+直到请求成功
+end note
+
 end 
-a2 -> a : ?
+
+httpStatus解析 -> badDataOutput : bad数据.log 
+
+httpStatus解析 --> 解析内容 :  内核渲染/cherio
+
+解析内容 -> 执行抓取内容script : GBK,UTF-8
+
+执行抓取内容script -> 内容输出 : 日志.log
+
+解析内容 -> 执行循环script
+
+
+执行循环script --> http请求
 
 
 @enduml
