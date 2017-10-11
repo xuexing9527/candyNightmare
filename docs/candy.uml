@@ -1,0 +1,23 @@
+@startuml
+autonumber "<b>[000]"
+
+actor "爬取入口\n输入" as a
+entity "命令解析器" as run 
+
+
+a -> run : hello
+note right
+对第一步加一个简要说明
+* 步骤１
+* 步骤２
+end note
+
+a1 -> a : g
+loop 1000 times
+a1 -> a2 : b 
+a2 -> a2 : x 
+end 
+a2 -> a : ?
+
+
+@enduml
