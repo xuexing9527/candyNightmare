@@ -1,6 +1,7 @@
 const
     http = require('http')
-    ,http_confirm = require("./http_confirm");
+    ,http_confirm = require("./http_confirm")
+    ,unload_data_prints = require("./unload_data_print")
 ;
 function http_end(opts,model) {
 
@@ -9,7 +10,7 @@ function http_end(opts,model) {
             http_confirm(opts,model,res);// 此处应当判断status
         })
         .on('error', (err) => {
-            console.log(err);
+            unload_data_prints(opts,err)
         });
 
 }

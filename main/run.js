@@ -1,7 +1,12 @@
-const http_send = require("./module/http_send");
+const
+    http_send = require("./module/http_send")
+    ,unload_data_print = require("./module/unload_data_prints")
 ;
+// const commonApi = {
+//     unload_data_print: unload_data_print
+// }
 var model = {};
-const opts = {url: "http://www.time-stone.cn"}
+const opts = {url: "http://www.time-stone.cn"};
 http_send(opts,model); //需要判断一个状态 检测send结束 有了 html数据
 
 setInterval(function () {
