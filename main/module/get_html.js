@@ -4,28 +4,32 @@ const cheerio = require('cheerio')
     ,BufferHelper = require('bufferhelper')
 ;//辅助解析gb2312
 
-const getHtml = function (opts,model,res) {
+const getHtml = function (opts,res) {
 
     var bufferHelper = new BufferHelper();
-    var utf_8_html = "";
+    var html = "";
 
     res
         .on('data', (chunk) => {
             bufferHelper.concat(chunk);
-            utf_8_html += chunk;
+            html += chunk;
         })
         .on('end', () => {
 
-            const html =  iconv.decode(bufferHelper.toBuffer(),'GBK')
-                ,_$ = cheerio.load(html) //GBK
-                ,$ = cheerio.load(utf_8_html); //UTF-8
+            $html.status = 1;
+            $html.text = html;
 
-            if(false){ //此处获得html 存到model
-                $html = _$;
+            const gbk_html =  iconv.decode(bufferHelper.toBuffer(),'GBK')
+                ,_$ = cheerio.load(gbk_html) //GBK
+                ,$ = cheerio.load(html); //UTF-8
+            var obj = {};
+
+            if(false){ //此处获得html 存到model , $html
+                obj = _$;
             }else{
-                $html = $;
+                obj = $;
             }
-            model.$html = $html;
+            $html.$ = obj;
         });
 }
 

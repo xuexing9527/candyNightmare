@@ -10,4 +10,4 @@ const unload_data_print = (opts,err) => {
 }
 
 
-modeule.exprot = unload_data_print;
+module.exports = unload_data_print;
