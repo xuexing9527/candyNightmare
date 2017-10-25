@@ -3,7 +3,7 @@ const
     ,http_confirm = require("./../http/http_confirm")
     ,unload_data_print = require("./../print/unload_data_print")
 ;
-function http_end(opts) {
+function https_end(opts) {
 
 
 
@@ -25,5 +25,5 @@ function http_end(opts) {
         });
 
 }
-module.exports = http_end;
+module.exports = https_end;
 
