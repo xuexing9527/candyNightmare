@@ -5,7 +5,7 @@ const publisher = (del,opts) => {
     }).then(function(ch) {
         return ch.assertQueue(del.q).then(function(ok) {
 
-            var someJson = '{url:"'+ opts.url + '"}';
+            const someJson = JSON.stringify(opts);
 
             return ch.sendToQueue(del.q, new Buffer(someJson));
 

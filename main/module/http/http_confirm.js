@@ -15,8 +15,7 @@ const http_confirm = function (opts,res) {
     let error;
 
     if (statusCode !== 200) {
-        error = new Error('请求失败。\n' +
-            `状态码: ${statusCode}`);
+        error = new Error('请求失败。\n' + `状态码: ${statusCode}`);
         // } else if (!/^application\/json/.test(contentType)) {
     }
 
