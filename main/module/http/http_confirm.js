@@ -1,9 +1,9 @@
 const
     get_html = require("./get_html")
-    ,unload_data_print = require("./unload_data_print")
-    ,ERR = require("./err")
+    ,unload_data_print = require("../print/unload_data_print")
+    ,ERR = require("../print/err_print")
     ;
-var $html = require("../model/$html");
+var $html = require("../../model/$html");
 
 const http_confirm = function (opts,res) {
 

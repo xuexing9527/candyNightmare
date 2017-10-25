@@ -1,12 +1,12 @@
 
 "use strict";
 // consumer
-const consumer = (open) => {
-    open.then(function(conn) {
+const consumer = (del) => {
+    del.open.then(function(conn) {
         return conn.createChannel();
     }).then(function(ch) {
-        return ch.assertQueue(q).then(function(ok) {
-            return ch.consume(q, function(msg) {
+        return ch.assertQueue(del.q).then(function(ok) {
+            return ch.consume(del.q, function(msg) {
 
                 if (msg !== null) {
                     console.log(msg.content.toString());

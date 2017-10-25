@@ -1,10 +1,12 @@
 const amqp = require('amqplib');
 
-const start_connect = () => {
+const start_connect = (open) => {
 
-    var q = 'QUE_xx';
-    const open = require('amqplib').connect('amqp://test:123@localhost/test_host');
+    const q = 'QUE_xx';
 
+    open = require('amqplib').connect('amqp://test:123@localhost/test_host');
+
+    return {open:open,q:q};
 }
 
 module.exports = start_connect;

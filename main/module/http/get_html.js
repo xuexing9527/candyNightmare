@@ -1,4 +1,4 @@
-var $html = require("../model/$html");
+var $html = require("../../model/$html");
 const cheerio = require('cheerio')
     ,iconv = require('iconv-lite')//解析gb2312格式
     ,BufferHelper = require('bufferhelper')
