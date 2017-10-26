@@ -5,6 +5,8 @@ const
     // ,http_confirm = require("./../module/http/http_confirm")
     // ,get_html = require("./../module/http/get_html")
 ;
+// const loggerFun = require("./../module/log/log4js");
+// const logger = loggerFun("data/common/json.log")();
 
 const controller = (opts)=>{
 
@@ -24,6 +26,7 @@ const controller = (opts)=>{
 
     }else{
         console.log("不是有效的url ",opts);
+        logger.error("不是有效的url",opts);
     }
 }
 

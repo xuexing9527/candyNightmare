@@ -5,6 +5,8 @@ const
     ;
 var $html = require("../../model/$html");
 
+// const loggerFun = require("./../../module/log/log4js");
+// const logger = loggerFun("data/common/json.log")();
 const http_confirm = function (opts,res) {
 
 
@@ -22,6 +24,7 @@ const http_confirm = function (opts,res) {
     if (error) {
         $html.status = 100;
         console.error(error.message);
+        logger.error(error.message,opts);
         // 消耗响应数据以释放内存
         res.resume();
         return;

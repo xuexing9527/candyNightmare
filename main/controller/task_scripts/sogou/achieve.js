@@ -1,7 +1,7 @@
 "use strict"
 // const loggerFun = require("./../../../module/log/log4js");
 // const logger = loggerFun("data/baidu/json.log")();
-const baidu = (opts,$)=>{
+const sogou = (opts,$)=>{
 
     console.log("---------- achieve ----------")
     console.log($("title").text());
@@ -17,4 +17,4 @@ const baidu = (opts,$)=>{
 }
 
 
-module.exports = baidu;
+module.exports = sogou;

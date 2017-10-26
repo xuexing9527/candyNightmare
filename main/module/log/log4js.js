@@ -1,7 +1,6 @@
 const log4js = require('log4js');
 
 const logger = (fileName) => {
-
     log4js.configure({
         appenders: {
             cheese: {
@@ -12,7 +11,7 @@ const logger = (fileName) => {
         categories: {
             default: {
                 appenders: ['cheese']
-                ,level: 'error'  //输出日志等级，err以下输出，以上不输出
+                ,level: 'debug'  //输出日志等级，err以下输出，以上不输出
             }
         }
     });

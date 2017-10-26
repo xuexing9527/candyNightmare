@@ -1,95 +1,52 @@
 const
-    // http_send = require("./module/http/http_send")
-    // ,$html = require("./model/$html")
-    // ,http_confirm = require("./module/http_confirm")
-    // ,
     start_connect = require("./service/start_connect")
     ,publisher = require("./service/publisher")
     ,consumer = require("./service/consumer")
 ;
 
-
-
-
-
-
-// const opts = {url: "http://www.icbc.com"};
-
-// const opts = {url: "http://www.time-stone.cn"};
-
-// const opts = {url: "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=13724780780"};
-// const opts = {url: "https://www.baidu.com"};
-// const opts = {url: "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=13724780780"};
-
-// const opts = {url: "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=13724780780"};
-
-// 13585927500    360 有数据 ，百度没有
-// const opts = {url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=13585927500"};
-
-
-// const opts = {url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=18662846599"};
-// const opts = {url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=15021295864"};
-//
-//
-// const del = start_connect(); //将 del 移到构造函数中去
-//
-// publisher(del,opts);
-//
-// consumer(del,opts);
-
-
-
-
-
-
-
-
+//日志
+const loggerFun = require("./module/log/log4js");
+global.logger = loggerFun("data/baidu/json_resove_lost1.log");
 
 
 /* test task */
 const _1000phoneNum = require("./../json/1000url.json");
 
+
 // console.log(_1000phoneNum);
 var arr = _1000phoneNum.arr;
 
-
-// for(var i=0;i<arr.length;i++){
-//
-//     const opts = {url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=" + arr[i].phoneNum};
-//
-//
-//     const del = start_connect(); //将 del 移到构造函数中去
-//
-//     publisher(del,opts);
-//
-//     consumer(del,opts);
-// }
-
-
-
 var i = 0;
+// var i = 829;
+// var i =500;
 const timer = setInterval(function () { //控制时间
 
     if(i<arr.length){
+    // if(i< 500){
 
         const opts = {
-            url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=" + arr[i].phoneNum
+            url: "http://www.baidu.com/s?wd=" + arr[i].phoneNum
+            // url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=" + arr[i].phoneNum
+            // url: "http://www.sogou.com/web?query=" + arr[i].phoneNum
             ,phoneNum: arr[i].phoneNum
             ,id : i
         };
-
-        i++;
 
         const del = start_connect(); //将 del 移到构造函数中去
 
         publisher(del,opts);
 
         consumer(del,opts);
+
+        i++;
+
     }else{
+        console.log(i);
+        logger.info("end send消息共计:",i);
         clearInterval(timer);
     }
 
-},2000);
-
-
+},2101);
+// },3210);
+// },4321);
 

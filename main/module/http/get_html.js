@@ -35,7 +35,12 @@ const getHtml = function (opts,res) {
                 keep_run(opts,$);
             }
             // $html.$ = obj;
+        })
+        .on('error', (e) => {
+            console.error(`错误: ${e.message}`);
+            logger.error(`错误: ${e.message},${opts}`);
         });
+    ;
 }
 
 module.exports = getHtml;
