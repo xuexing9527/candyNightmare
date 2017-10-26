@@ -72,7 +72,12 @@ const timer = setInterval(function () { //控制时间
 
     if(i<arr.length){
 
-        const opts = {url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=" + arr[i].phoneNum};
+        const opts = {
+            url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=" + arr[i].phoneNum
+            ,phoneNum: arr[i].phoneNum
+            ,id : i
+        };
+
         i++;
 
         const del = start_connect(); //将 del 移到构造函数中去
@@ -84,7 +89,7 @@ const timer = setInterval(function () { //控制时间
         clearInterval(timer);
     }
 
-},1000);
+},2000);
 
 
 

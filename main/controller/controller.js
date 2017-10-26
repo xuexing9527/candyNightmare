@@ -8,6 +8,7 @@ const
 
 const controller = (opts)=>{
 
+
     var i = 0;
 
     if(JSON.stringify( opts ).match(/http/) !== null) i = 1;
@@ -24,7 +25,6 @@ const controller = (opts)=>{
     }else{
         console.log("不是有效的url ",opts);
     }
-
 }
 
 
