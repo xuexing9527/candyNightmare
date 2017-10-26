@@ -6,28 +6,25 @@ const
 
 //日志
 const loggerFun = require("./module/log/log4js");
-global.logger = loggerFun("data/baidu/json_resove_lost1.log");
+global.logger = loggerFun("data/baidu/json_resove_lost1.log"); // 日志打印目录    百度
+// global.logger = loggerFun("data/360/json_resove_lost1.log"); // 日志打印目录     360
+// global.logger = loggerFun("data/sougou/json_resove_lost1.log"); // 日志打印目录    搜狗
 
 
 /* test task */
 const _1000phoneNum = require("./../json/1000url.json");
+const arr = _1000phoneNum.arr;
 
 
-// console.log(_1000phoneNum);
-var arr = _1000phoneNum.arr;
-
-var i = 0;
-// var i = 829;
-// var i =500;
+var i = 0; // url标记id  INDEX
 const timer = setInterval(function () { //控制时间
 
     if(i<arr.length){
-    // if(i< 500){
 
         const opts = {
-            url: "http://www.baidu.com/s?wd=" + arr[i].phoneNum
-            // url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=" + arr[i].phoneNum
-            // url: "http://www.sogou.com/web?query=" + arr[i].phoneNum
+            url: "http://www.baidu.com/s?wd=" + arr[i].phoneNum   // 百度
+            // url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=" + arr[i].phoneNum // 360
+            // url: "http://www.sogou.com/web?query=" + arr[i].phoneNum // 搜狗
             ,phoneNum: arr[i].phoneNum
             ,id : i
         };
@@ -47,6 +44,4 @@ const timer = setInterval(function () { //控制时间
     }
 
 },2101);
-// },3210);
-// },4321);
 
