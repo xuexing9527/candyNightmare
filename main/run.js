@@ -6,7 +6,7 @@ const
 
 //日志
 const loggerFun = require("./module/log/log4js");
-global.logger = loggerFun("data/baidu/json_resove_lost600-700.txt"); // 日志打印目录    百度
+global.logger = loggerFun("data/baidu/json_resove_lost8.txt"); // 日志打印目录    百度
 // global.logger = loggerFun("data/360/json_resove_lost1.txt"); // 日志打印目录     360
 // global.logger = loggerFun("data/sougou/json_resove_lost1.txt"); // 日志打印目录    搜狗
 
@@ -17,7 +17,7 @@ const arr = _1000phoneNum.arr;
 
 
 // var i = 559; // url标记id  INDEX
-var i = 600;
+var i = 700;
 
 function main() {
 
@@ -29,7 +29,7 @@ function main() {
 
 
         // if(i<arr.length){
-        if(i < 700){
+        if(i < 800){
             // if(i == 595){
 
             const opts = {
