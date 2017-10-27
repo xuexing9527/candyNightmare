@@ -6,6 +6,7 @@ const logger = (fileName) => {
             cheese: {
                 type: 'file' //文件形式 输出
                 ,filename: fileName  //日志输出目录（相对路径？）
+                , maxLogSize: 1896986
             }
         },
         categories: {
@@ -16,7 +17,7 @@ const logger = (fileName) => {
         }
     });
 
-    return log4js.getLogger('cheese');
+    return log4js.getLogger('info');
 
 }
 

@@ -4,7 +4,7 @@ const start_connect = (open) => {
 
     const q = 'QUE_xx';
 
-    open = amqp.connect('amqp://test:123@localhost/test_host');
+    open = amqp.connect('amqp://admin:123@localhost/test_host');
 
     return {open:open,q:q};
 }

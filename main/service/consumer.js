@@ -24,10 +24,11 @@ const consumer = (del) => {
 
 
 
-                    // ch.ack(msg); //标记已被使用 ?
+                    ch.ack(msg); //标记已被使用 ?
                 }else{
                     console.log(JSON.parse( msg.content ));
                     logger.error("消息队列接受异常", JSON.parse( msg.content ));
+                    ch.ack(msg); //标记已被使用 ?
                 }
 
             });
