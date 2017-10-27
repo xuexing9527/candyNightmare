@@ -5,7 +5,7 @@ actor "爬取入口\n输入" as a
 entity "命令解析器" as run 
 
 
-a -> run : hello
+a -> run : hello1
 note right
 对第一步加一个简要说明
 * 步骤１
