@@ -4,7 +4,7 @@
 // const logger = loggerFun("data/common/json.log")();
 const controller = require("./../controller/controller");
 // consumer
-const consumer = (del) => {
+const consumer = (del,opts__proto__) => {
     del.open.then(function(conn) {
         return conn.createChannel();
     }).then(function(ch) {
@@ -19,7 +19,7 @@ const consumer = (del) => {
                     console.log(JSON.parse( msg.content ));
 
                     // 消费消息
-                    controller(JSON.parse(msg.content));
+                    controller(JSON.parse(msg.content),opts__proto__);
 
 
 

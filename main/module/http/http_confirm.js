@@ -7,7 +7,7 @@ var $html = require("../../model/$html");
 
 // const loggerFun = require("./../../module/log/log4js");
 // const logger = loggerFun("data/common/json.log")();
-const http_confirm = function (opts,res) {
+const http_confirm = function (opts,res,opts__proto__) {
 
 
 
@@ -30,7 +30,7 @@ const http_confirm = function (opts,res) {
         return;
     }
 
-    get_html(opts,res);
+    get_html(opts,res,opts__proto__);
 
 
     /* xx */

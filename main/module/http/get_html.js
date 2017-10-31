@@ -8,7 +8,7 @@ const
     ,keep_run = require("./../../controller/keep_run")
 ;
 
-const getHtml = function (opts,res) {
+const getHtml = function (opts,res,opts__proto__) {
 
     var bufferHelper = new BufferHelper();
     var html = "";
@@ -28,11 +28,11 @@ const getHtml = function (opts,res) {
                 ,$ = cheerio.load(html); //UTF-8
 
             if(false){  //此处获得html 存到model , $html
-                achieve(opts,_$);
-                keep_run(opts,_$);
+                achieve(opts,_$,opts__proto__);
+                keep_run(opts,_$,opts__proto__);
             }else{
-                achieve(opts,$);
-                keep_run(opts,$);
+                achieve(opts,$,opts__proto__);
+                keep_run(opts,$,opts__proto__);
             }
             // $html.$ = obj;
         })

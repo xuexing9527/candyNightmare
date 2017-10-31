@@ -2,7 +2,8 @@ const log4js = require('log4js');
 
 const logger = (fileName) => {
     log4js.configure({
-        appenders: {
+        /**
+        appenders: {   // 丢日志啊 ，丢日志 ...
             cheese: {
                 type: 'file' //文件形式 输出
                 ,filename: fileName  //日志输出目录（相对路径？）
@@ -12,8 +13,19 @@ const logger = (fileName) => {
         categories: {
             default: {
                 appenders: ['cheese']
-                ,level: 'debug'  //输出日志等级，err以下输出，以上不输出
+                ,level: 'info'  //输出日志等级，info以下输出，以上不输出
             }
+        }
+         **/
+        appenders: {
+            everything: {
+                type: 'fileSync'
+                , filename: fileName
+                // , maxLogSize: 1896986
+            }
+        },
+        categories: {
+            default: { appenders: [ 'everything' ], level: 'info' }
         }
     });
 
