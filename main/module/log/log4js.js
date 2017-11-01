@@ -29,7 +29,7 @@ const logger = (fileName) => {
         }
     });
 
-    return log4js.getLogger('info');
+    return log4js.getLogger('everything');
 
 }
 

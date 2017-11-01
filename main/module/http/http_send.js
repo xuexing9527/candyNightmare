@@ -3,10 +3,8 @@ const
     ,http_confirm = require("./http_confirm")
     ,unload_data_print = require("../print/unload_data_print")
 ;
-// const loggerFun = require("./../log/log4js");
-// const logger = loggerFun("data/common/json.log")();
-function http_end(opts,opts__proto__) {
 
+function http_end(opts,opts__proto__) {
     http
         .get(opts.targetUrl, (res) => {
             http_confirm(opts,res,opts__proto__);// 此处应当判断status
@@ -17,5 +15,6 @@ function http_end(opts,opts__proto__) {
             logger.error(opts,err);
         });
 }
+
 module.exports = http_end;
 

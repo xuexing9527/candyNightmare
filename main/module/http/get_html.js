@@ -1,5 +1,5 @@
 'use strict'
-// var $html = require("../../model/$html");
+
 const
     cheerio = require('cheerio')
     ,iconv = require('iconv-lite')//解析gb2312格式
@@ -9,7 +9,6 @@ const
 ;
 
 const getHtml = function (opts,res,opts__proto__) {
-
     var bufferHelper = new BufferHelper();
     var html = "";
 
@@ -19,10 +18,6 @@ const getHtml = function (opts,res,opts__proto__) {
             html += chunk;
         })
         .on('end', () => {
-
-            // $html.status = 1;
-            // $html.text = html;
-
             const gbk_html =  iconv.decode(bufferHelper.toBuffer(),'GBK')
                 ,_$ = cheerio.load(gbk_html) //GBK
                 ,$ = cheerio.load(html); //UTF-8
@@ -34,13 +29,11 @@ const getHtml = function (opts,res,opts__proto__) {
                 achieve(opts,$,opts__proto__);
                 keep_run(opts,$,opts__proto__);
             }
-            // $html.$ = obj;
         })
         .on('error', (e) => {
             console.error(`错误: ${e.message}`);
             logger.error(`错误: ${e.message},${opts}`);
         });
-    ;
 }
 
 module.exports = getHtml;

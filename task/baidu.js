@@ -24,6 +24,7 @@ BAIDU.prototype.urlRule = function (){ // url处理函数
             targetUrl: this.url + "/s?wd=" + this.data[i].phoneNum
             ,id: i
             ,phoneNum: this.data[i].phoneNum
+            ,logFile: this.logFile
         };
         arr.push(target);
     }
