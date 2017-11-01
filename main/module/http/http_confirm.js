@@ -1,6 +1,8 @@
+
 const get_html = require("./get_html");
 
 const http_confirm = function (opts,res,opts__proto__) {
+    console.log("进入了http_confirm...");
     const { statusCode } = res;
     // const contentType = res.headers['content-type'];
     let error;
@@ -12,6 +14,7 @@ const http_confirm = function (opts,res,opts__proto__) {
         logger.error(error.message,opts);
         // 消耗响应数据以释放内存
         res.resume();
+        console.log("confirm 失败 ...");
         return;
     }
 

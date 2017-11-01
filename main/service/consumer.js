@@ -9,7 +9,7 @@ const consumer = (conDoor_qeName,opts__proto__) => {
             return ch.consume(conDoor_qeName.q, function(msg) {
                 if (msg !== null) {
                     // 打印消息
-                    console.log(JSON.parse( msg.content ));
+                    console.log(`消费消息：${ msg.content }`);
                     // 消费消息
                     controller(JSON.parse(msg.content),opts__proto__);
                     ch.ack(msg); //标记已被使用 ?

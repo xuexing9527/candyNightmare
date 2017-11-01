@@ -8,6 +8,7 @@ const
 const controller = (opts,opts__proto__)=>{
     try{
 
+        console.log("进入了controller...");
         var i = 0;
         if(JSON.stringify( opts.targetUrl ).match(/http/) !== null) i = 1;
         if(JSON.stringify( opts.targetUrl ).match(/https/) !== null) i = 2;
