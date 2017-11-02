@@ -20,6 +20,7 @@ const achieve = (opts,$,opts__proto__) => {
     const log = loggerFun(opts.logFile); // 日志打印目录
     log.info(data);
 
+    console.log($("html").text())
     console.log("--end--")
 }
 

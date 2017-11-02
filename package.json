@@ -26,10 +26,12 @@
     "async": "^2.5.0",
     "bufferhelper": "^0.2.1",
     "cheerio": "^1.0.0-rc.2",
+    "electron": "^1.7.9",
     "http": "0.0.0",
     "https": "^1.0.0",
     "iconv-lite": "^0.4.19",
-    "log4js": "^2.3.10"
+    "log4js": "^2.3.10",
+    "nightmare": "^2.10.0"
   },
   "dependencies": {
     "async-es": "^2.5.0"

@@ -22,6 +22,7 @@ _360.prototype.urlRule = function (){ // url处理函数
             targetUrl: this.url + "/s?ie=utf-8&fr=none&src=home_www&q=" + this.data[i].phoneNum
             ,id: i
             ,phoneNum: this.data[i].phoneNum
+            ,logFile: this.logFile
         };
         target.__proto__ =this;
         arr.push(target);

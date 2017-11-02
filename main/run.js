@@ -12,12 +12,12 @@ const
     ,start_connect = require("./service/start_connect")
 ;
 
-// 百度
-const TASK = require("./../task/baidu");
-// //360
-// const TASK = require("./../task/_360");
-//// 搜狗
+// // 搜狗
 // const TASK = require("./../task/sougou");
+//  // 微博
+//  const TASK = require("./../task/weibo");
+ // 微信_搜狗
+ const TASK = require("./../task/sougou_weixin");
 
 const opts = new TASK();
 //统一消息格式
@@ -46,7 +46,7 @@ function mc(arr,send) {
             clearInterval(timer);
         }
     }
-    const timer = setInterval(go,1000);
+    const timer = setInterval(go,3688);
 }
 publisher(conDoor_qeName,arr,opts.__proto__,mc);
 

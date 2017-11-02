@@ -15,16 +15,6 @@ const logger = (fileName) => {
                 ,level: 'info'
             }
         }
-        // appenders: {
-        //     everything:{
-        //         type: 'fileSync'
-        //         , filename: fileName
-        //         // , maxLogSize: 1896986
-        //     }
-        // },
-        // categories: {
-        //     default: { appenders: [ 'everything' ], level: 'info' }
-        // }
     });
     return log4js.getLogger('cheese');
 }

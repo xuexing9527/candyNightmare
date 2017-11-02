@@ -14,7 +14,7 @@ const http_confirm = function (opts,res,opts__proto__) {
         logger.error(error.message,opts);
         // 消耗响应数据以释放内存
         res.resume();
-        console.log("confirm 失败 ...");
+        console.log("...");
         return;
     }
 
