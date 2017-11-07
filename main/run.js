@@ -12,12 +12,9 @@ const
     ,start_connect = require("./service/start_connect")
 ;
 
-// // 搜狗
+// 任务
 // const TASK = require("./../task/sougou");
-//  // 微博
-//  const TASK = require("./../task/weibo");
- // 微信_搜狗
- const TASK = require("./../task/sougou_weixin");
+ const TASK = require("./../task/weibo");
 
 const opts = new TASK();
 //统一消息格式
@@ -35,9 +32,11 @@ const conDoor_qeName = start_connect(); //建立连接
  * @param send
  */
 function mc(arr,send) {
-    var i = 0 ;
+    // var i = 94 ;
+    var i = 0;
     function go() {
         if(i<arr.length){
+        // if(i == 94){
             send(JSON.stringify( arr[i] ));
             i++;
         }else{
@@ -46,7 +45,7 @@ function mc(arr,send) {
             clearInterval(timer);
         }
     }
-    const timer = setInterval(go,3688);
+    const timer = setInterval(go,6688);
 }
 publisher(conDoor_qeName,arr,opts.__proto__,mc);
 

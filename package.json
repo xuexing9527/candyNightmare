@@ -31,7 +31,8 @@
     "https": "^1.0.0",
     "iconv-lite": "^0.4.19",
     "log4js": "^2.3.10",
-    "nightmare": "^2.10.0"
+    "nightmare": "^2.10.0",
+    "superagent": "^3.8.0"
   },
   "dependencies": {
     "async-es": "^2.5.0"

@@ -19,7 +19,8 @@ _360.prototype.urlRule = function (){ // url处理函数
     for(let i = 0,len = this.data.length;i < len ;i ++){
 
         let target = {
-            targetUrl: this.url + "/s?ie=utf-8&fr=none&src=home_www&q=" + this.data[i].phoneNum
+            url:this.url
+            ,targetUrl: this.url + "/s?ie=utf-8&fr=none&src=home_www&q=" + this.data[i].phoneNum
             ,id: i
             ,phoneNum: this.data[i].phoneNum
             ,logFile: this.logFile

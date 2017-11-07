@@ -22,6 +22,7 @@ BAIDU.prototype.urlRule = function (){ // url处理函数
 
         let target = {
             targetUrl: this.url + "/weibo/" + this.data[i].phoneNum
+            ,url:this.url
             ,id: i
             ,phoneNum: this.data[i].phoneNum
             ,logFile: this.logFile
