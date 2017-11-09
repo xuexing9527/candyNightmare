@@ -1,47 +1,53 @@
+
+ /******************************************************
+ *                                                     *
+ *               Control how to play                   *
+ *                                                     *
+ ******************************************************/
+
+"use strict";
 const
-    start_connect = require("./service/start_connect")
-    ,publisher = require("./service/publisher")
+    publisher = require("./service/publisher")
     ,consumer = require("./service/consumer")
+    ,start_connect = require("./service/start_connect")
 ;
 
-//日志
+// 任务
+// const TASK = require("./../task/sougou");
+ const TASK = require("./../task/weibo");
+
+const opts = new TASK();
+//统一消息格式
+const arr = opts.init();
+
+// 日志
 const loggerFun = require("./module/log/log4js");
-global.logger = loggerFun("data/baidu/json_resove_lost1.log"); // 日志打印目录    百度
-// global.logger = loggerFun("data/360/json_resove_lost1.log"); // 日志打印目录     360
-// global.logger = loggerFun("data/sougou/json_resove_lost1.log"); // 日志打印目录    搜狗
+// 日志打印目录
+global.logger = loggerFun(opts.logFile);
 
-
-/* test task */
-const _1000phoneNum = require("./../json/1000url.json");
-const arr = _1000phoneNum.arr;
-
-
-var i = 0; // url标记id  INDEX
-const timer = setInterval(function () { //控制时间
-
-    if(i<arr.length){
-
-        const opts = {
-            url: "http://www.baidu.com/s?wd=" + arr[i].phoneNum   // 百度
-            // url: "https://www.so.com/s?ie=utf-8&fr=none&src=home_www&q=" + arr[i].phoneNum // 360
-            // url: "http://www.sogou.com/web?query=" + arr[i].phoneNum // 搜狗
-            ,phoneNum: arr[i].phoneNum
-            ,id : i
-        };
-
-        const del = start_connect(); //将 del 移到构造函数中去
-
-        publisher(del,opts);
-
-        consumer(del,opts);
-
-        i++;
-
-    }else{
-        console.log(i);
-        logger.info("end send消息共计:",i);
-        clearInterval(timer);
+const conDoor_qeName = start_connect(); //建立连接
+/**
+ * 数组类型的任务，采用定时器回调,频率发送消息
+ * @param arr
+ * @param send
+ */
+function mc(arr,send) {
+    // var i = 94 ;
+    var i = 0;
+    function go() {
+        if(i<arr.length){
+        // if(i == 94){
+            send(JSON.stringify( arr[i] ));
+            i++;
+        }else{
+            console.log(i);
+            logger.info("end send消息共计:",i);
+            clearInterval(timer);
+        }
     }
+    const timer = setInterval(go,6688);
+}
+publisher(conDoor_qeName,arr,opts.__proto__,mc);
 
-},2101);
+consumer(conDoor_qeName,opts.__proto__);
 

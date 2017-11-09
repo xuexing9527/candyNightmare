@@ -1,34 +1,31 @@
 "use strict";
+
 const
     http_send = require("./../module/http/http_send")
     ,https_send = require("./../module/https/https_send")
-    // ,http_confirm = require("./../module/http/http_confirm")
-    // ,get_html = require("./../module/http/get_html")
 ;
-// const loggerFun = require("./../module/log/log4js");
-// const logger = loggerFun("data/common/json.log")();
 
-const controller = (opts)=>{
+const controller = (opts,opts__proto__)=>{
+    try{
 
+        console.log("进入了controller...");
+        var i = 0;
+        if(JSON.stringify( opts.targetUrl ).match(/http/) !== null) i = 1;
+        if(JSON.stringify( opts.targetUrl ).match(/https/) !== null) i = 2;
 
-    var i = 0;
+        if(i===1){ // i 判断 1 http 还是 https
+            http_send(opts,opts__proto__);
+        }else if(i===2){
+            https_send(opts,opts__proto__);
 
-    if(JSON.stringify( opts ).match(/http/) !== null) i = 1;
-    if(JSON.stringify( opts ).match(/https/) !== null) i = 2;
+        }else{
+            console.log("不是有效的url ",opts);
+            logger.error("不是有效的url",opts);
+        }
 
-    if(i===1){ // i 判断 1 http 还是 https
-
-        http_send(opts);
-
-    }else if(i===2){
-
-        https_send(opts);
-
-    }else{
-        console.log("不是有效的url ",opts);
-        logger.error("不是有效的url",opts);
+    }catch(e){
+        logger.error(`容错处理： ${e}`);
     }
 }
-
 
 module.exports = controller;
