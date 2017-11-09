@@ -2,4 +2,8 @@
 *~
 .history
 *.pyc
-
+node_modules/
+.idea
+data
+将删除 .idea/inspectionProfiles/
+将删除 package.json
