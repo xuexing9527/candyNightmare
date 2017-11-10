@@ -20,6 +20,11 @@ const nightmareCloser = (function () {
                 '#m_signin_password', 'work1234'
             )
             .click("#m_signin_form .btn-success")
+            .cookies.get({}, (error, cookies) => {
+                console.log("--------cookies------------")
+                console.log(error, cookies)
+            console.log("--------cookies end------------")
+            })
             .wait(2000)
             .click('#tlogo')
             .wait(2000)
