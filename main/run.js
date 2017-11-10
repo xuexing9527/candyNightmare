@@ -13,8 +13,8 @@ const
 ;
 
 // 任务
-// const TASK = require("./../task/sougou");
- const TASK = require("./../task/weibo");
+//  const TASK = require("./../task/weibo");
+const TASK = require("./../task/REG007");
 
 const opts = new TASK();
 //统一消息格式
@@ -32,11 +32,11 @@ const conDoor_qeName = start_connect(); //建立连接
  * @param send
  */
 function mc(arr,send) {
-    // var i = 94 ;
-    var i = 0;
+    var i = 450 ;
+    // var i = 86;
     function go() {
-        if(i<arr.length){
-        // if(i == 94){
+        if(i<761){
+        // if(i == 140){
             send(JSON.stringify( arr[i] ));
             i++;
         }else{
@@ -45,9 +45,8 @@ function mc(arr,send) {
             clearInterval(timer);
         }
     }
-    const timer = setInterval(go,6688);
+    const timer = setInterval(go,2898);
 }
 publisher(conDoor_qeName,arr,opts.__proto__,mc);
 
-consumer(conDoor_qeName,opts.__proto__);
-
+consumer(conDoor_qeName,opts.__proto__,opts);

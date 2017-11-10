@@ -5,12 +5,14 @@ function SOUGOU() {
         url: "http://www.sogou.com" // 根 url
         ,data: require("./../json/1000url.json").arr
         ,recursion_status: 0 // 递归状态
+        ,send_method: 1 // 1 是 http || superagent ; 2 是  nightmare
         ,logFile: "data/sougou/sougou.txt" // 日志目录
     }
 
     this.url = obj.url;
     this.data = obj.data;
     this.recursion_status = obj.recursion_status;
+    this.send_method= obj.send_method;
     this.logFile = obj.logFile;
 }
 
@@ -24,6 +26,7 @@ SOUGOU.prototype.urlRule = function (){ // url处理函数
         let target = {
             targetUrl: this.url + "/web?query=" + this.data[i].phoneNum
             ,url:this.url
+            ,send_method: this.send_method
             ,id: i
             ,phoneNum: this.data[i].phoneNum
             ,logFile: this.logFile

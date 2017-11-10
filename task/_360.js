@@ -5,12 +5,14 @@ function _360() {
         url: "https://www.so.com" // 根 url
         ,data: require("./../json/1000url.json").arr
         ,recursion_status: 0 // 递归状态
+        ,send_method: 1 // 1 是 http || superagent ; 2 是  nightmare
         ,logFile: "data/360/360.txt" // 日志目录
     }
 
     this.url = obj.url;
     this.data = obj.data;
     this.recursion_status = obj.recursion_status;
+    this.send_method= obj.send_method;
     this.logFile = obj.logFile;
 }
 
@@ -19,8 +21,9 @@ _360.prototype.urlRule = function (){ // url处理函数
     for(let i = 0,len = this.data.length;i < len ;i ++){
 
         let target = {
-            url:this.url
-            ,targetUrl: this.url + "/s?ie=utf-8&fr=none&src=home_www&q=" + this.data[i].phoneNum
+            targetUrl: this.url + "/s?ie=utf-8&fr=none&src=home_www&q=" + this.data[i].phoneNum
+            ,url:this.url
+            ,send_method: this.send_method
             ,id: i
             ,phoneNum: this.data[i].phoneNum
             ,logFile: this.logFile

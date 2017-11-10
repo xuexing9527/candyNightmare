@@ -1,24 +1,13 @@
-const
-    https = require('https')
+const https = require('https')
     ,http_confirm = require("./../http/http_confirm")
     ,unload_data_print = require("./../print/unload_data_print")
 ;
 
-// const loggerFun = require("./../../module/log/log4js");
-// const logger = loggerFun("data/common/json.log")();
 function https_end(opts,opts__proto__) {
 
-
-
-
-    //伪装浏览器
-
-
-
-
+    //伪装浏览器 ?
 
     if(true){ //URL
-
         https
             .get(opts.targetUrl, (res) => {
                 http_confirm(opts,res,opts__proto__);// 此处应当判断status
@@ -28,9 +17,7 @@ function https_end(opts,opts__proto__) {
                 unload_data_print(opts,err)
                 logger.error(err,opts);
             });
-
     }else{ //host
-
         https
             .get(opts, (res) => {
                 http_confirm(opts,res,opts__proto__);// 此处应当判断status
@@ -41,8 +28,5 @@ function https_end(opts,opts__proto__) {
             });
     }
 
-
-
 }
 module.exports = https_end;
-

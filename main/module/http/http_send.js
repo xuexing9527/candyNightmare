@@ -4,12 +4,11 @@ const
     ,superagent = require('superagent')
     ,http_confirm = require("./http_confirm")
     ,unload_data_print = require("../print/unload_data_print")
-    ,cheerio = require('cheerio')
 ;
 
 function http_send(opts,opts__proto__) {
-    console.log("进入了http_send...");
 
+    console.log("进入了http_send...");
 
     http
         .get(opts.targetUrl, (res) => {
@@ -18,9 +17,9 @@ function http_send(opts,opts__proto__) {
         })
         .on('error', (err) => {
             err = JSON.stringify(err);
-            unload_data_print(opts,err)
             logger.error(opts,err);
         });
+
     /**
      * superagent start
      */
@@ -85,4 +84,3 @@ function http_send(opts,opts__proto__) {
 }
 
 module.exports = http_send;
-

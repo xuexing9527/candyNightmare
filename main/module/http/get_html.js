@@ -65,7 +65,6 @@ const getHtml = function (opts,res,opts__proto__) {
             }
 
         },10000);
-    ;
 }
 
 module.exports = getHtml;

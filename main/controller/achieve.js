@@ -16,11 +16,8 @@ const achieve = (opts,$,opts__proto__) => {
         ,content_list: opts__proto__.data_list($)
     }
     data = JSON.stringify(data);
-
     const log = loggerFun(opts.logFile); // 日志打印目录
     log.info(data);
-
-    // console.log($("html").text())
     console.log("--end--")
 }
 

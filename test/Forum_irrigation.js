@@ -11,18 +11,19 @@ const nightmareCloser = (function () {
         nightmare = Nightmare({show: true});
 
         console.log("-----------")
-        nightmare.goto('https://www.reg007.com/')
-            .click("#nav_btn_signin")
+        nightmare.goto('http://privatelounge.amg-china.com/privatelounge/forums/index.php')
+            // .click("")
             .type(
-                '#m_signin_email','15313350626'
+                '[name=vb_login_username]','zhangwei'
             )
             .type(
-                '#m_signin_password', 'work1234'
+                '[name="vb_login_password"]', 'zhangwei10'
             )
-            .click("#m_signin_form .btn-success")
+            .click('[accesskey=\"s\"]')
             .wait(2000)
-            .click('#tlogo')
-            .wait(2000)
+            .goto('http://privatelounge.amg-china.com/forums/showthread.php?p=3212#post3212').wait(3000)
+            // .click('#tlogo')
+            // .wait(2000)
         return nightmare;
     }
 
@@ -34,19 +35,19 @@ function testOnePage(nightmare) {
 
     var i = 0;
     const arr = [
-        "15313350626"
-        ,"13301317002"
-        ,"18511888741"
+        "猜猜我是谁?"
+        ,"我猜你猜不猜？"
+        ,"你猜"
     ];
     function callback() {
 
-        if(i<3){
+        if(i<arr.length){
 
             nightmare
 
-                .type('#e_m', '')
-                .type('#e_m', arr[i])
-                .click("#tsb")
+
+                .type('#vB_Editor_QR_textarea', arr[i])
+                .click("#qr_submit")
                 .evaluate(function () {
                     return document.getElementsByTagName("html")[0].innerHTML;
                 })
@@ -59,22 +60,6 @@ function testOnePage(nightmare) {
             i++
         }else{
 
-            nightmare
-
-                .type('#kw', '')
-                .type('#kw', '任务执行完毕!')
-                .click('#su')
-                .wait(3000)
-                .evaluate(function () {
-                    return document.getElementsByTagName("HTML")[0].innerHTML;
-                })
-                .wait(2000)
-                .then(function (result) {
-                    console.log(result);
-                })
-                .catch(function (error) {
-                    console.error('Search failed:', error);
-                });
 
             clearInterval(timer);
         }

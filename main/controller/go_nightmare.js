@@ -1,66 +1,66 @@
 'use strict'
 const loggerFun = require("./../module/log/log4js");
 
+const go_nightmare = (opts,opts__proto__,nightmare) => {
 
-const go_nightmare = (opts,opts__proto__) => {
+    console.log("进入了 nightmare 搜索页面 ... ");
 
-    const Nightmare = require('nightmare');
-    var nightmare = Nightmare({ show: true });
     nightmare
-        .goto(opts.url).wait(3000)
-        // .type('[uigs=search_article]','#query')
-        // .click('[uigs=search_article]')
-        // .wait('[uigs=search_article]')
-        .goto(opts.targetUrl)
-        .evaluate(function(){
-            return document.getElementsByTagName('HTML')[0].innerHTML;
+        .goto(opts.url)
+        .type('#e_m', '')
+        .type('#e_m', opts.phoneNum)
+        .click("#tsb")
+        .wait(26869)
+        .evaluate(function () {
+            return document.getElementsByTagName("html")[0].innerHTML;
         })
+        .end()
+        .then(function (html) {
 
-        // .end()
-        .then(function(html){
+            console.log("进入了 html cheerio load 页面阶段 ... ");
+
             const cheerio = require('cheerio');
+            const achieve = require('./../controller/achieve');
             var $ = cheerio.load(html);
-            var data = {
-                phone_num: opts.phoneNum
-                ,id : opts.id
-                ,whole_text: $("html").text()
-                ,content_list: opts__proto__.data_list($)
-            }
-            data = JSON.stringify(data);
-            const log = loggerFun(opts.logFile); // 日志打印目录
-            log.info(data);
-            console.log(data);
-        }).catch((err)=>{
+            achieve(opts,$,opts__proto__);
+        })
+        .catch(function (error) {
+            console.error('Search failed:', error);
+        });
 
-        const log = loggerFun(opts.logFile); // 日志打印目录
-        log.error(`nightmare then 错误 ： ${err}`);
-    })
-    //     .then(function ($) {
+    /**********  nightmare load url  ************/
+
+
+
+    // const Nightmare = require('nightmare');
+    // var nightmare = Nightmare({ show: true });
     //
-    //     console.log("--achieve--");
-    //     /**
-    //      * 需要抓取信息的脚本 执行规则   落日志
-    //      *
-    //      */
-    //     var data = {
-    //         phone_num: opts.phoneNum
-    //         ,id : opts.id
-    //         ,whole_text: $("html").text()
-    //         ,content_list: opts__proto__.data_list($)
-    //     }
-    //     data = JSON.stringify(data);
+    //
+    // nightmare
+    //     // .goto(opts.url).wait(3888)
+    //     .goto(opts.targetUrl).wait(16888)
+    //     .evaluate(function(){
+    //         return document.getElementsByTagName('HTML')[0].innerHTML;
+    //     })
+    //     .end()
+    //     .then(function(html){
+    //         const cheerio = require('cheerio');
+    //         const achieve = require('./../controller/achieve');
+    //         var $ = cheerio.load(html);
+    //
+    //         achieve(opts,$,opts__proto__);
+    //
+    //     }).catch((err)=>{
     //
     //     const log = loggerFun(opts.logFile); // 日志打印目录
-    //     log.info(data);
-    //
-    //     // console.log($("html").text())
-    //     console.log("--end--")
-    //
+    //     log.error(`nightmare then 错误 ： ${err}`);
+    // }).catch((err)=>{
+    //     const log = loggerFun(opts.logFile); // 日志打印目录
+    //     log.error(`nightmare加载错误 ， see： ${err}`);
     // })
+    // ;
 
-    ;
-    // nightmare
-
+    /*********************  nightmare load url end  *********************/
 }
 
 module.exports = go_nightmare;
