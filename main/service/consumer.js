@@ -11,17 +11,19 @@ const consumer = (conDoor_qeName,opts__proto__,opts) => {
     var nightmare = Nightmare({show: true});
 
     nightmare
+        .goto(opts.url)
+        /*sougou_weixin*/
         /*zhaohuini*/
         // .goto("http://www.zhaohuini.com/Login.php")
         // .type('#signup_email','15313350626')
         // .type('#signup_password','work123')
-        // .wait(26000)
+        // .wait(8000)
         // .click("#btn_signup")
         /*zhaohuini end*/
-        .goto('https://www.reg007.com/account/signin')
-        .type('#signin_email','15313350626')
-        .type('#signin_password','work1234')
-        .click('#signin_form [type="submit"]')
+        //.goto('https://www.reg007.com/account/signin')
+        //.type('#signin_email','15313350626')
+        //.type('#signin_password','work1234')
+        //.click('#signin_form [type="submit"]')
         .wait(1688)
         .then(()=>{
 

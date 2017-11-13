@@ -6,21 +6,22 @@ const go_nightmare = (opts,opts__proto__,nightmare) => {
     console.log("进入了 nightmare 搜索页面 ... ");
 
     nightmare
-        // .goto(opts.url)
-        // .type('[name="q"]', '')
-        // .type('[name="q"]', opts.phoneNum)
-        // .click('[type="submit"]')
+         // .goto(opts.url)
+         // .type('[name="q"]', '')
+         // .type('[name="q"]', opts.phoneNum)
+         // .click('[type="submit"]')
         /*re007*/
-        .goto(opts.url)
-        .type('#e_m', '')
-        .type('#e_m', opts.phoneNum)
-        .click("#tsb")
+        //.goto(opts.url)
+        //.type('#e_m', '')
+        //.type('#e_m', opts.phoneNum)
+        //.click("#tsb")
         /*re007end*/
         /* sougou_weixin */
-        // .type('#query', opts.phoneNum)
-        // .click('[uigs="search_article"]')
+        .type('#query', '')
+        .type('#query', opts.phoneNum)
+        .click('[uigs="search_article"]')
         /* sougou_weixin end */
-        .wait(18888)
+        .wait(12888)
         .evaluate(function () {
             return document.getElementsByTagName("html")[0].innerHTML;
         })
