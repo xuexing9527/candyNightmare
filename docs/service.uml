@@ -1,0 +1,11 @@
+@startuml
+config->"任务并发配置限制个数"
+"任务并发配置限制个数"->"task"
+task->"send msg并发配置限制个数" 
+"send msg并发配置限制个数"->"准备当前send msg"
+"准备当前send msg"->"DB"
+"DB"->"send one msg"
+"send one msg"->"Candy"
+"监听Candy结构化输出"->"DB"
+"监听Candy结构化输出"->"send one msg"
+@enduml

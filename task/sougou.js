@@ -3,7 +3,7 @@ function SOUGOU() {
 
     const obj = {
         url: "http://www.sogou.com" // 根 url
-        ,data: require("./../json/1000url.json").arr
+        ,data: require("./json/1000url.json").arr
         ,recursion_status: 0 // 递归状态
         ,send_method: 1 // 1 是 http || superagent ; 2 是  nightmare
         ,logFile: "data/sougou/sougou.txt" // 日志目录

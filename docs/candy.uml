@@ -1,13 +1,9 @@
 @startuml
+
 autonumber "<b>[000]"
 
 
-<<<<<<< HEAD
-
-a -> run : hello1
-=======
 run ->http请求 : http请求
->>>>>>> 6e17dc35ac16d4bf9376cdac0e25aadb0f861580
 note right
 基于url发送请求
 end note
