@@ -1,11 +1,19 @@
 @startuml
-config->"任务并发配置限制个数"
-"任务并发配置限制个数"->"task"
-task->"send msg并发配置限制个数" 
-"send msg并发配置限制个数"->"准备当前send msg"
-"准备当前send msg"->"DB"
-"DB"->"send one msg"
-"send one msg"->"Candy"
-"监听Candy结构化输出"->"DB"
-"监听Candy结构化输出"->"send one msg"
+run -> config: 配置BDB
+activate config
+run -> config: 配置任务规则,并发，单条最长响应时间,形成task
+note right
+	形成task
+end note
+deactivate config
+config->run: 获取task规则
+run->send.js: 查询BDB中的断点，(并发)发送task msg
+activate send.js
+send.js->listen: 启动监听，监听msg返回的结构化数据data
+deactivate send.js
+activate listen
+listen->run: 获得msg返回的结构化数据data
+listen -> BDB: 储存结构化数据data 
+listen->run: 根据data判断是否入终止任务
+deactivate listen
 @enduml

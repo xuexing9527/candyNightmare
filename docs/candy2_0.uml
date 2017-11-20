@@ -1,16 +1,18 @@
 @startuml
-"Candy"->"msg结构化"
-"msg结构化"->"URL主域名"
-"msg结构化"->"msg执行选型"
-"msg执行选型"->"浏览器动作"
-"msg执行选型"->"仅内容获取"
-"浏览器动作"->"选型msg结构化"
-"仅内容获取"->"选型msg结构化"
-"仅内容获取"->"仅解析html"
-"仅解析html"->"结构化输出"
-"仅内容获取"->"解析js执行后的html"
-"解析js执行后的html"->"结构化输出"
-"浏览器动作"->"单步执行"
-"单步执行"->"执行动作唯一性检验"
-"执行动作唯一性检验"->"结构化输出"
+
+run->rule : msg结构化
+rule->run: 形成可执行msg
+note left 
+msg={
+	"domain":"顶级域名",
+	"type":"执行动作选型，浏览器动作|仅内容获取",
+	"contentScript":"fun 对应的type选型的结构化方法",
+	...
+}
+end note 
+run->do: 解析type
+activate do
+run->do: 解析conentScript
+do->run: 返回结构化数据data
+deactivate do
 @enduml

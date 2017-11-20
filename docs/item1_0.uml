@@ -1,0 +1,18 @@
+@startuml
+run->"Rabbit Service": config配置服务启动项
+activate "Rabbit Service" 
+run->"Rabbit Service": 查询BDB检索任务断点,基于断点实例化任务
+"Rabbit Service"->run: 发送任务初始msg, 开始监听candy返回的结构化数据data
+deactivate "Rabbit Service" 
+note right
+	得到任务初始msg
+end note
+run -> candy: 获得msg并执行
+activate "candy" 
+candy -> run: 返回结构化数据data
+deactivate "candy" 
+note right
+	形成data
+end note
+"Rabbit Service"->run: 监听倒data ，判断data是否成功决定是否终止任务，并按规则存入BDB
+@enduml
