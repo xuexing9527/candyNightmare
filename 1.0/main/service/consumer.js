@@ -6,7 +6,7 @@ const consumer = (conDoor_qeName,opts__proto__,opts) => {
 
     /******nightmare page*******/
 
-
+    //
     var Nightmare = require('nightmare');
     var nightmare = Nightmare({show: true});
 
@@ -14,17 +14,19 @@ const consumer = (conDoor_qeName,opts__proto__,opts) => {
         .goto(opts.url)
         /*sougou_weixin*/
         /*zhaohuini*/
-        // .goto("http://www.zhaohuini.com/Login.php")
-        // .type('#signup_email','15313350626')
-        // .type('#signup_password','work123')
-        // .wait(8000)
-        // .click("#btn_signup")
+        .goto("http://www.zhaohuini.com/Login.php")
+        .type('#signup_email','15313350626')
+        .type('#signup_password','work123')
+        .click("#btn_signup")
+        .wait(8000)
         /*zhaohuini end*/
-        //.goto('https://www.reg007.com/account/signin')
-        //.type('#signin_email','15313350626')
-        //.type('#signin_password','work1234')
-        //.click('#signin_form [type="submit"]')
-        .wait(1688)
+        /*REG007*/
+        // .goto('https://www.reg007.com/account/signin')
+        // .type('#signin_email','15313350626')
+        // .type('#signin_password','work1234')
+        // .click('#signin_form [type="submit"]')
+        // .wait(1000)
+        /*REG007 end*/
         .then(()=>{
 
             console.log("-----   准备完毕  -----")
@@ -106,11 +108,12 @@ const consumer = (conDoor_qeName,opts__proto__,opts) => {
     //                 // 打印消息
     //                 console.log(`消费消息：${ msg.content }`);
     //                 // 消费消息
-    //                 controller(JSON.parse(msg.content),opts__proto__,nightmare);
+    //                 // controller(JSON.parse(msg.content),opts__proto__,nightmare);
+    //                 controller(JSON.parse(msg.content),opts__proto__);
     //                 ch.ack(msg); //标记已被使用 ?
     //             }else{
-    //                 console.log(JSON.parse( msg.content ));
-    //                 logger.error("消息队列接受异常", JSON.parse( msg.content ));
+    //                 logger.error("消息队列接受异常");
+    //                 console.log(msg);
     //                 ch.ack(msg); //标记已被使用 ?
     //             }
     //         });

@@ -13,10 +13,10 @@ const controller = (opts,opts__proto__,nightmare)=>{
         switch (opts.send_method){
             case 1 : // http(s) 请求
                 var i;
-                (JSON.stringify( opts.targetUrl ).match(/http/) !== null)
-                    ? i = 1
-                    : (JSON.stringify( opts.targetUrl ).match(/https/) !== null)
+                (JSON.stringify( opts.targetUrl ).match(/https/) !== null)
                     ? i = 2
+                    : (JSON.stringify( opts.targetUrl ).match(/http/) !== null)
+                    ? i = 1
                     :i=0;
                 switch (i){
                     case 1:

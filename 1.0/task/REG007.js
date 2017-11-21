@@ -5,10 +5,10 @@ function REG007() {
 
     const obj = {
         url: "https://www.reg007.com/" // 根 url
-        ,data: require("./json/1000url.json").arr
+        ,data: require("./json10000/9000.json").arr
         ,recursion_status: 0 // 递归状态
         ,send_method: 2 // 1 是 http || superagent ; 2 是  nightmare
-        ,logFile: "data/REG007/REG007_761-999_twice.txt" // 日志目录
+        ,logFile: "data/REG007/REG007.txt" // 日志目录
     }
 
     this.url = obj.url;

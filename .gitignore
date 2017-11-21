@@ -4,6 +4,6 @@
 *.pyc
 node_modules/
 .idea
-data
+1.0/data
 将删除 .idea/inspectionProfiles/
 将删除 package.json

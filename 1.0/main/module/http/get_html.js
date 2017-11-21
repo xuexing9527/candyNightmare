@@ -51,7 +51,7 @@ const getHtml = function (opts,res,opts__proto__) {
 
             if(end_status) return;
 
-            console.log(`!!! 任务异常 >> -- 10s 内 累加了 ${get_data_num} 次data ,但未触发end事件 任务 : ${JSON.stringify(opts)}  -- !!!`);
+            console.log(`!!! 任务异常 >> -- 28s 内 累加了 ${get_data_num} 次data ,但未触发end事件 任务 : ${JSON.stringify(opts)}  -- !!!`);
             const gbk_html =  iconv.decode(bufferHelper.toBuffer(),'GBK')
                 ,_$ = cheerio.load(gbk_html) //GBK
                 ,$ = cheerio.load(html); //UTF-8
@@ -64,7 +64,7 @@ const getHtml = function (opts,res,opts__proto__) {
                 keep_run(opts,$,opts__proto__);
             }
 
-        },10000);
+        },28000);
 }
 
 module.exports = getHtml;

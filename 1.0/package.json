@@ -14,9 +14,9 @@
     "url": "http://117.119.73.75:9999/dataManagement/candy"
   },
   "keywords": [
+    "node",
     "http",
-    "nightmare",
-    "node"
+    "nightmare"
   ],
   "author": "xx",
   "license": "ISC",
@@ -24,7 +24,6 @@
     "amqplib": "^0.5.1",
     "asyn": "0.0.1",
     "async": "^2.5.0",
-    "berkeleydb": "^0.2.1",
     "bufferhelper": "^0.2.1",
     "cheerio": "^1.0.0-rc.2",
     "electron": "^1.7.9",
