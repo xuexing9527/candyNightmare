@@ -1,46 +1,50 @@
 "use strict"
 function SOUGOU() {
-
     const obj = {
-        url: "http://www.sogou.com" // 根 url
-        ,data: require("./json/1000url.json").arr
-        ,recursion_status: 0 // 递归状态
-        ,send_method: 1 // 1 是 http || superagent ; 2 是  nightmare
-        ,logFile: "data/sougou/sougou.txt" // 日志目录
+        // 根 url
+        url: "http://www.sogou.com"
+        ,data: require("./json10000/9000.json").arr
+        // 递归状态
+        ,recursion_status: 0
+        // 1 是 http || superagent ; 2 是  nightmare
+        ,send_method: 1
+        // 日志目录
+        ,logFile: "data/sougou/sougou.txt"
+        //队列名称
+        ,queueName: 'que_xx_sougou'
+        //单条等待时间
+        ,waitTime: 12000
     }
-
-    this.url = obj.url;
-    this.data = obj.data;
-    this.recursion_status = obj.recursion_status;
-    this.send_method= obj.send_method;
-    this.logFile = obj.logFile;
+    for(let k in obj){
+        this[k] = obj[k];
+    }
 }
-
-
-
-SOUGOU.prototype.urlRule = function (){ // url处理函数
-
+// url处理函数
+SOUGOU.prototype.urlRule = function (){
     var arr = [];
     for(let i = 0,len = this.data.length;i < len ;i ++){
 
         let target = {
             targetUrl: this.url + "/web?query=" + this.data[i].phoneNum
-            ,url:this.url
-            ,send_method: this.send_method
             ,id: i
-            ,phoneNum: this.data[i].phoneNum
-            ,logFile: this.logFile
         };
-        target.__proto__ =this;
+        for(let k in this){
+            if(k!=='data'){
+                target[k] = this[k];
+            }else{
+                target.phoneNum= this.data[i].phoneNum;
+            }
+        }
         arr.push(target);
     }
-
-    return arr; // 返回一个可供直接使用的 目标数组
+    // 返回一个可供直接使用的 目标数组
+    return arr;
 }
 SOUGOU.prototype.keep_run = function (){
     return "no keep_run"
 }
-SOUGOU.prototype.data_list = function ($) { // 格式化数据
+// 格式化数据
+SOUGOU.prototype.data_list = function ($) {
     var arr = [];
     $(".rb").each(function (i) {
         arr.push({
@@ -51,9 +55,8 @@ SOUGOU.prototype.data_list = function ($) { // 格式化数据
     });
     return arr;
 }
+// 包含 初始 url ，目标 url ,id 基本信息 和 详细信息
 SOUGOU.prototype.init = function () {
-    return this.urlRule() // 包含 初始 url ，目标 url ,id 基本信息 和 详细信息
+    return this.urlRule()
 }
-
-
 module.exports = SOUGOU;

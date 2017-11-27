@@ -7,13 +7,12 @@ function _360() {
         ,recursion_status: 0 // 递归状态
         ,send_method: 1 // 1 是 http || superagent ; 2 是  nightmare
         ,logFile: "data/360/360.txt" // 日志目录
+        ,queueName: 'que_xx_360'
+        ,waitTime: 3333
     }
-
-    this.url = obj.url;
-    this.data = obj.data;
-    this.recursion_status = obj.recursion_status;
-    this.send_method= obj.send_method;
-    this.logFile = obj.logFile;
+    for(let k in obj){
+        this[k] = obj[k];
+    }
 }
 
 _360.prototype.urlRule = function (){ // url处理函数
@@ -22,13 +21,15 @@ _360.prototype.urlRule = function (){ // url处理函数
 
         let target = {
             targetUrl: this.url + "/s?ie=utf-8&fr=none&src=home_www&q=" + this.data[i].phoneNum
-            ,url:this.url
-            ,send_method: this.send_method
             ,id: i
-            ,phoneNum: this.data[i].phoneNum
-            ,logFile: this.logFile
         };
-        target.__proto__ =this;
+        for(let k in this){
+            if(k!=='data'){
+                target[k] = this[k];
+            }else{
+                target.phoneNum= this.data[i].phoneNum;
+            }
+        }
         arr.push(target);
     }
 

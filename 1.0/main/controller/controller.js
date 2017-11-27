@@ -7,7 +7,6 @@ const http_send = require("./../module/http/http_send")
 
 const controller = (opts,opts__proto__,nightmare)=>{
     try{
-
         console.log("进入了controller...");
 
         switch (opts.send_method){
@@ -30,9 +29,7 @@ const controller = (opts,opts__proto__,nightmare)=>{
                         logger.error(`不是有效的url ->  ${opts}`);
                 }
                 break;
-            case 2: // nightmare 封装请求
-                // switch (){
-                // }
+            case 2:
                 go_nightmare(opts,opts__proto__,nightmare);
                 break;
             default:

@@ -7,13 +7,13 @@ function BAIDU() {
         ,recursion_status: 0 // 递归状态
         ,send_method: 1 // 1 是 http || superagent ; 2 是  nightmare
         ,logFile: "data/baidu/baidu.txt" // 日志目录
+        ,queueName: 'que_xx_baidu'
+        ,waitTime: 1000
     }
 
-    this.url = obj.url;
-    this.data = obj.data;
-    this.recursion_status = obj.recursion_status;
-    this.send_method= obj.send_method;
-    this.logFile = obj.logFile;
+    for(let k in obj){
+        this[k] = obj[k];
+    }
 }
 
 
@@ -24,12 +24,16 @@ BAIDU.prototype.urlRule = function (){ // url处理函数
 
         let target = {
             targetUrl: this.url + "/s?wd=" + this.data[i].phoneNum
-            ,url: this.url
-            ,send_method: this.send_method
             ,id: i
-            ,phoneNum: this.data[i].phoneNum
-            ,logFile: this.logFile
         };
+        for(let k in this){
+            if(k!=='data'){
+                target[k] = this[k];
+            }else{
+                target.phoneNum= this.data[i].phoneNum;
+            }
+        }
+
         arr.push(target);
     }
     return arr; // 返回一个可供直接使用的 目标数组
