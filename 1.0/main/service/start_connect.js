@@ -10,7 +10,7 @@ const amqp = require('amqplib');
 const start_connect = (q) => {
     // q = 'QUE_xx';
     // const open = amqp.connect('amqp://admin:123@localhost/test_host');
-    const open = amqp.connect('amqp://admin:123@localhost/test_host');
+    const open = amqp.connect('amqp://admin:123@127.0.0.1/');
     return {open:open,q:q};
 }
 

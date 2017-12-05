@@ -4,13 +4,13 @@ const loggerFun = require("./../module/log/log4js");
 const go_nightmare = (opts,opts__proto__,nightmare) => {
     console.log("进入了 nightmare 搜索页面 ... ");
 
-    function ready(html,opts,opts__proto__) {
+    function ready(html,opts,opts__proto__,nightmare) {
         console.log("进入了 html cheerio load 页面阶段 ... ");
 
         const cheerio = require('cheerio');
         const achieve = require('./../controller/achieve');
         var $ = cheerio.load(html);
-        achieve(opts,$,opts__proto__);
+        achieve(opts,$,opts__proto__,nightmare);
     }
     try{
         if(opts.queueName === 'que_xx_REG007'){
@@ -24,7 +24,7 @@ const go_nightmare = (opts,opts__proto__,nightmare) => {
                     return document.getElementsByTagName("html")[0].innerHTML;
                 })
                 .then(function (html) {
-                    ready(html,opts,opts__proto__);
+                    ready(html,opts,opts__proto__,nightmare);
                 })
                 .catch(function (error) {
                     console.error('Search failed go_nightmare:', error);
@@ -41,7 +41,7 @@ const go_nightmare = (opts,opts__proto__,nightmare) => {
                     return document.getElementsByTagName("html")[0].innerHTML;
                 })
                 .then(function (html) {
-                    ready(html,opts,opts__proto__);
+                    ready(html,opts,opts__proto__,nightmare);
                 })
                 .catch(function (error) {
                     console.error('Search failed go_nightmare::', error);
@@ -57,7 +57,7 @@ const go_nightmare = (opts,opts__proto__,nightmare) => {
                     return document.getElementsByTagName("html")[0].innerHTML;
                 })
                 .then(function (html) {
-                    ready(opts,opts__proto__);
+                    ready(html,opts,opts__proto__,nightmare);
                 })
                 .catch(function (error) {
                     console.error('Search failed go_nightmare::', error);

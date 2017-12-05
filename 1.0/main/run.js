@@ -15,7 +15,7 @@ const
 // 任务
 //const TASK = require("../task/REG007");
 const TASK = require("../task/zhaohuini");
-const breakPoint = 6453;
+const breakPoint = 9028;
 
 const opts = new TASK();
 //统一消息格式

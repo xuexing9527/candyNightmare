@@ -3,7 +3,7 @@
 
 const loggerFun = require("./../module/log/log4js");
 
-const achieve = (opts,$,opts__proto__) => {
+const achieve = (opts,$,opts__proto__,nightmare) => {
     console.log("--achieve--");
     /**
      * 需要抓取信息的脚本 执行规则   落日志

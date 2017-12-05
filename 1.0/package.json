@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "node ./main/run"
+    "test": "sudo docker start tutum-rabbitmq && node ./main/run"
   },
   "repository": {
     "type": "git",
