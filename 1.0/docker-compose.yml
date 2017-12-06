@@ -1,0 +1,10 @@
+rabbit1:
+  image: 117.119.73.75:8103/bijukunjummen/rabbitmq-server:3.6.10
+  hostname: rabbit1
+  ports:
+    - "5672:5672"
+    - "15672:15672"
+  environment:
+    - RABBITMQ_DEFAULT_USER=admin
+    - RABBITMQ_DEFAULT_PASS=123
+
