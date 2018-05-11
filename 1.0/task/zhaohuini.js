@@ -56,5 +56,20 @@ ZHAOHUINI.prototype.data_list = function ($) { // 格式化数据
 ZHAOHUINI.prototype.init = function () {
     return this.urlRule() // 包含 初始 url ，目标 url ,id 基本信息 和 详细信息
 }
+ZHAOHUINI.prototype.steps = (nightmare, callback) => {
+    nightmare
+        .goto("http://www.zhaohuini.com/Login.php")
+        .type('#signup_email','15313350626')
+        .type('#signup_password','work123')
+        .wait(8000)
+        .click("#btn_signup")
+        .wait(1000)
+        .then(()=>{
+            callback();
+        })
+        .catch((err)=>{
+            console.log(`开启页面 故障 失败 consumer.js  ： ${err}`);
+        })
+}
 
 module.exports = ZHAOHUINI;

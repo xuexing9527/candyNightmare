@@ -1,5 +1,6 @@
 "use strict";
 const controller = require("./../controller/controller");
+const steps = require('./step');
 const consumer = (conDoor_qeName,opts__proto__,opts) => {
     function ready() {
         console.log("-----   准备完毕  -----")
@@ -30,39 +31,48 @@ const consumer = (conDoor_qeName,opts__proto__,opts) => {
     if(opts.send_method ===2 ){
         var Nightmare = require('nightmare');
         var nightmare = Nightmare({show: true});
-            if(opts.queueName === 'que_xx_REG007'){
-                nightmare
-                    .goto('https://www.reg007.com/account/signin')
-                    .type('#signin_email','15313350626')
-                    .type('#signin_password','work1234')
-                    .click('#signin_form [type="submit"]')
-                    .wait(1000)
-                    .then(()=>{
-                        ready();
-                    })
-                    .catch((err)=>{
-                        console.log(`开启页面 故障 失败 consumer.js  ： ${err}`);
-                    })
-            }
-            if(opts.queueName === 'que_xx_zhaohuini'){
-                nightmare
-                    .goto("http://www.zhaohuini.com/Login.php")
-                    .type('#signup_email','15313350626')
-                    .type('#signup_password','work123')
-                    .wait(8000)
-                    .click("#btn_signup")
-                    .wait(1000)
-                    .then(()=>{
-                        ready();
-                    })
-                    .catch((err)=>{
-                        console.log(`开启页面 故障 失败 consumer.js  ： ${err}`);
-                    })
-            }
-            if(opts.queueName !== 'que_xx_REG007'&&opts.queueName !== 'que_xx_zhaohuini'){
-                logger.error(`队列名称判断出错，请查看consumer -> ${e}`);
-                return
-            }
+            // if(opts.queueName === 'que_xx_REG007'){
+            //     nightmare
+            //         .goto('https://www.reg007.com/account/signin')
+            //         .type('#signin_email','15313350626')
+            //         .type('#signin_password','work1234')
+            //         .click('#signin_form [type="submit"]')
+            //         .wait(1000)
+            //         .then(()=>{
+            //             ready();
+            //         })
+            //         .catch((err)=>{
+            //             console.log(`开启页面 故障 失败 consumer.js  ： ${err}`);
+            //         })
+            // }
+        steps(opts ,nightmare, ready);
+        // if(opts.queueName === 'que_xx_zhaohuini'){
+        //
+        //
+        //
+        //         steps(opts ,nightmare, ready);
+        //
+        //
+        //
+        //
+        //     // nightmare
+        //         //     .goto("http://www.zhaohuini.com/Login.php")
+        //         //     .type('#signup_email','15313350626')
+        //         //     .type('#signup_password','work123')
+        //         //     .wait(8000)
+        //         //     .click("#btn_signup")
+        //         //     .wait(1000)
+        //         //     .then(()=>{
+        //         //         ready();
+        //         //     })
+        //         //     .catch((err)=>{
+        //         //         console.log(`开启页面 故障 失败 consumer.js  ： ${err}`);
+        //         //     })
+        //     }
+        //     if(opts.queueName !== 'que_xx_REG007'&&opts.queueName !== 'que_xx_zhaohuini'){
+        //         logger.error(`队列名称判断出错，请查看consumer -> ${e}`);
+        //         return
+        //     }
     }else
     if(opts.send_method ===1 ){
         conDoor_qeName.open.then(function(conn) {

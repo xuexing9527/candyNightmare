@@ -56,5 +56,19 @@ REG007.prototype.data_list = function ($) { // 格式化数据
 REG007.prototype.init = function () {
     return this.urlRule() // 包含 初始 url ，目标 url ,id 基本信息 和 详细信息
 }
+REG007.prototype.steps = function (nightmare, callback) {
+    nightmare
+        .goto('https://www.reg007.com/account/signin')
+        .type('#signin_email','15313350626')
+        .type('#signin_password','work1234')
+        .click('#signin_form [type="submit"]')
+        .wait(1000)
+        .then(()=>{
+            callback();
+        })
+        .catch((err)=>{
+            console.log(`开启页面 故障 失败 consumer.js  ： ${err}`);
+        })
+}
 
 module.exports = REG007;
