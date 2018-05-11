@@ -7,6 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
+    "start": "node ./main/run",
     "test": "sudo docker-compose up -d && node ./main/run"
   },
   "repository": {
