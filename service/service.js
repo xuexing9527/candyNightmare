@@ -104,21 +104,7 @@ class Service {
 
 var service = new Service();
 
-// console.log(service);
 service.start();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //
 // // Publisher
