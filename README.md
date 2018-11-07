@@ -1,10 +1,10 @@
 # 框架结构
 
-![system](/docs/candy工程结构.jpg)
+![system](docs/item1_0.png)
 
 # 爬虫系统流程
 
-![system](/docs/candy.png)
+![system](docs/service.png)
 
 # 部署
 
