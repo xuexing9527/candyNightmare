@@ -1,10 +1,10 @@
 # 框架结构
 
-![system](docs/candy工程结构.jpg)
+![system](/docs/candy工程结构.jpg)
 
 # 爬虫系统流程
 
-![system](docs/candy.png)
+![system](/docs/candy.png)
 
 # 部署
 
@@ -18,7 +18,7 @@
     即可
 * 启动： 
     ```` js
-    npm test
+    npm run test
     ````
 
 # 执行
