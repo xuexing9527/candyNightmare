@@ -13,8 +13,10 @@ const
 ;
 
 // 任务
+ const TASK = require("../task/JD");
 // const TASK = require("../task/REG007");
- const TASK = require("../task/zhaohuini");
+//  const TASK = require("../task/baidu");
+//  const TASK = require("../task/sougou");
 const breakPoint = 9028;
 
 const opts = new TASK();
