@@ -27,7 +27,7 @@
     "async": "^2.5.0",
     "bufferhelper": "^0.2.1",
     "cheerio": "^1.0.0-rc.2",
-    "electron": "^1.7.9",
+    "electron": "^13.6.6",
     "http": "0.0.0",
     "https": "^1.0.0",
     "iconv-lite": "^0.4.19",
